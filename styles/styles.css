@@ -19,7 +19,7 @@ body {
     align-items: center;
 }
 
-.nav-link {
+.navbar-nav .nav-link {
     color: white;
     text-decoration: none;
     font-weight: bold;
