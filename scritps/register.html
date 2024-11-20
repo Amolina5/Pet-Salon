@@ -80,8 +80,35 @@
                 <button class="btn btn-dark" onclick="register()">Register</button>
             </div>
         </div>
+
+        <section>
+            <h2>Display names</h2>
+            <p>Total number of pets: <span id="totalPets">0</span></p>
+            <div id="pets">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Breed</th>
+                            <th>Service</th>
+                        </tr>
+                    </thead>
+                    <tbody id="petsTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
 
+    <hr>
+     <h2>Registered pets</h2>
+    <div id="pets"class="container row">
+       
+    </div>
+
     <script src="/scritps/register.js"></script>
+    <script src="/scritps/display.js"></script>
 </body>
 </html>
