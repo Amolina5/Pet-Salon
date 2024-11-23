@@ -111,4 +111,6 @@ function init() {
     displayPet();
  }
 
+ 
+
 window.onload = init;
