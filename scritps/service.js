@@ -45,6 +45,7 @@ function register() {
         $("#serviceForm")[0].reset();
     } else {
         $("#notification").text("Please fill out all fields correctly.").css("color", "red");
+        save(newService);// this is on storeManger
     }
 }
 

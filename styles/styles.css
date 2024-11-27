@@ -23,7 +23,7 @@ body {
 }
 
 .navbar-nav .nav-link {
-    color: white;
+    color: rgb(12, 12, 12);
     text-decoration: none;
     font-weight: bold;
     margin: 0 15px;
@@ -39,7 +39,7 @@ nav ul li {
     margin: 0 10px;
 }
 nav ul li a {
-    color: #fff;
+    color: #fffdfd;
     text-decoration: none;
 }
 
@@ -57,6 +57,7 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+    height: 157px;
 }
 
 .error {
@@ -85,4 +86,11 @@ main {
 
 .service h3 {
     margin-top: 0;
+}
+.welcome-img {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+    width: 20%;
+
 }

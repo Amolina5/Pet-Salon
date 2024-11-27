@@ -21,8 +21,8 @@ function Pet(name, age, gender, breed, service) {
 // Validations
 function isValid(pet) {
     let validation = true; // boolean result
-    let inputName = document.getElementById("txtName");
-    let inputAge = document.getElementById("txtAge");
+    let inputName = document.getElementById("name");
+    let inputAge = document.getElementById("age");
 
     if (pet.name === "") {
         validation = false;
@@ -38,12 +38,14 @@ function isValid(pet) {
 }
 
 // Register function
-function register() {
-    let inputName = document.getElementById("txtName").value;
-    let inputAge = document.getElementById("txtAge").value;
-    let inputGender = document.getElementById("txtGender").value;
-    let inputBreed = document.getElementById("txtBreed").value;
-    let inputService = document.getElementById("txtService").value;
+function register(event) {
+    event.preventDefault();
+
+    let inputName = document.getElementById("name").value;
+    let inputAge = document.getElementById("age").value;
+    let inputGender = document.getElementById("gender").value;
+    let inputBreed = document.getElementById("breed").value;
+    let inputService = document.getElementById("service").value;
 
     console.log(inputName, inputAge, inputGender, inputBreed, inputService);
 
@@ -65,40 +67,41 @@ function register() {
 
 // Clear form function
 function clearForm() {
-    document.getElementById("txtName").value = "";
-    document.getElementById("txtAge").value = "";
-    document.getElementById("txtGender").value = "";
-    document.getElementById("txtBreed").value = "";
-    document.getElementById("txtService").value = "";
-
-    displayPetNames();
-
+    document.getElementById("name").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("gender").value = "";
+    document.getElementById("breed").value = "";
+    document.getElementById("service").value = "";
 }
 
 // Display pets function
 function displayPet() {
-    let cardsSection = document.getElementById("pets");
+    let tableBody = document.getElementById("petsTableBody");
     let result = "";
 
-    for (let pet of pets) {
+    for (let i = 0; i < pets.length; i++) {
+        let pet = pets[i];
         result += `
-            <div class="card" id="${pet.name}">
-                <h3>${pet.name} - ${pet.service}</h3>
-                <p>${pet.breed}</p>
-                <p>${pet.gender === "Male" ? 'Male ♂' : 'Female ♀'}, ${pet.age} years.</p>
-                <button onclick="deletePet('${pet.name}')">Delete</button>
-            </div>
+            <tr>
+                <th scope="row">${i + 1}</th>
+                <td>${pet.name}</td>
+                <td>${pet.age}</td>
+                <td>${pet.gender}</td>
+                <td>${pet.breed}</td>
+                <td>${pet.service}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="deletePet(${i})">Remove</button></td>
+            </tr>
         `;
     }
 
-    cardsSection.innerHTML = result;
+    tableBody.innerHTML = result;
+    document.getElementById("totalPets").textContent = pets.length;
 }
 
 // Delete pet function
-function deletePet(petName) {
-    pets = pets.filter(pet => pet.name !== petName);
+function deletePet(index) {
+    pets.splice(index, 1);
     displayPet();
-
 }
 
 function init() {
@@ -106,11 +109,11 @@ function init() {
     let pet2 = new Pet("Apollo", 8, "Male", "Cane Corso", "Vaccines");
     let pet3 = new Pet("Finn", 3, "Male", "French Bulldog", "Vaccines");
     let pet4 = new Pet("Rocco", 5, "Male", "French Bulldog", "Vaccines");
-    pets.push(pet1, pet2, pet3, pet4,);
+    pets.push(pet1, pet2, pet3, pet4);
 
     displayPet();
- }
 
- 
+    document.getElementById("petForm").addEventListener("submit", register);
+}
 
 window.onload = init;
