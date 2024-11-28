@@ -65,6 +65,23 @@ function register(event) {
     }
 }
 
+// get services from local storage 
+function getServices(){
+    console.log("gerServices funtion")
+    let services = read ();
+    let option = "";
+
+    for(let i=0; i<services.length; i++){
+        let service =services[i];
+
+        option +=`
+        <option vaule="${service.desriptiiom}">${service.description}</option>
+        `
+
+    }
+    $("#txtService").append(option);
+}
+
 // Clear form function
 function clearForm() {
     document.getElementById("name").value = "";
@@ -112,6 +129,17 @@ function init() {
     pets.push(pet1, pet2, pet3, pet4);
 
     displayPet();
+    getServices();
+
+    $("mode").on("click"), function() {
+        if($("body").css("background-color") === `rgb(0,0,0)`){
+            $("body".css("background-color", "white"));
+            $(this).text("Dark mode");
+
+        }else {
+            console.log(" Light mode ")
+        }
+    }
 
     document.getElementById("petForm").addEventListener("submit", register);
 }

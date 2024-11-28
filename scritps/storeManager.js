@@ -3,6 +3,7 @@ const LS_KEY = "services";
 function save(service){
     let data = read();
     data.push(service);
+    
     let val = JSON.stringify(data);
     localStorage.setItem(LS_KEY,val);
 }
